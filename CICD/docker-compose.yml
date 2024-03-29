@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  backend:
+    image: wissemmtiri/pfa-app-backend:latest
+    container_name: pfa-backend
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=${POSTGRES_USER}
+      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_NAME=pfa
+    # CONSIDER USING ENVIRONEMENT FILES
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+
+networks:
+  backend:

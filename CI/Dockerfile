@@ -1,3 +1,4 @@
+# DOCKERFILE FOR THE BACKEND SERVICE OF THE APPLICATION
 #============================================
 #                   BUILD
 #============================================
